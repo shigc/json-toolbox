@@ -4,14 +4,14 @@ Thanks for taking the time to contribute. This document covers the basics.
 
 ## Before you start
 
-- Search [existing issues](https://github.com/your-name/json-toolbox/issues) to avoid duplicates.
+- Search [existing issues](https://github.com/shigc/json-toolbox/issues) to avoid duplicates.
 - For anything larger than a small fix, open an issue first so we can agree on the approach.
 - By participating you agree to follow our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Development setup
 
 ```bash
-git clone https://github.com/your-name/json-toolbox.git
+git clone https://github.com/shigc/json-toolbox.git
 cd json-toolbox
 npm install
 npm run dev
@@ -57,5 +57,5 @@ CI runs the same type-check and build on Node 20 and 22. Please make sure it is 
 
 ## Reporting bugs and security issues
 
-- Functional bugs: open a [bug report](https://github.com/your-name/json-toolbox/issues/new/choose).
+- Functional bugs: open a [bug report](https://github.com/shigc/json-toolbox/issues/new/choose).
 - Security vulnerabilities: **do not** open a public issue — follow [SECURITY.md](./SECURITY.md).

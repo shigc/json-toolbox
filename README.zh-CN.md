@@ -7,15 +7,17 @@
 [![Vite](https://img.shields.io/badge/Vite-7-646cff.svg)](https://vite.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6.svg)](https://www.typescriptlang.org/)
 
-[English](./README.md) | [简体中文](./README.zh-CN.md)
+[English](./README.md) | [简体中文](./README.zh-CN.md) | [繁體中文](./README.zh-TW.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
-<!--
-TODO: 把截图放到 docs/screenshot.png（建议 1280×720），然后取消下面的注释：
+**[在线 Demo →](https://json.shigc.top/)**
 
 <p align="center">
-  <img src="./docs/screenshot.png" alt="JSON Toolbox 截图" width="900">
+  <img src="./docs/screenshot.png" alt="JSON Toolbox 首页" width="900">
 </p>
--->
+
+<p align="center">
+  <img src="./docs/screenshot-format.png" alt="JSON 格式化工具，左侧输入、右侧结果" width="900">
+</p>
 
 ## 为什么还要再做一个 JSON 工具？
 
@@ -69,7 +71,7 @@ TODO: 把截图放到 docs/screenshot.png（建议 1280×720），然后取消�
 ### 安装并启动
 
 ```bash
-git clone https://github.com/your-name/json-toolbox.git
+git clone https://github.com/shigc/json-toolbox.git
 cd json-toolbox
 npm install
 npm run dev

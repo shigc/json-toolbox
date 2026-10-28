@@ -7,15 +7,17 @@
 [![Vite](https://img.shields.io/badge/Vite-7-646cff.svg)](https://vite.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6.svg)](https://www.typescriptlang.org/)
 
-[English](./README.md) | [简体中文](./README.zh-CN.md)
+[English](./README.md) | [简体中文](./README.zh-CN.md) | [繁體中文](./README.zh-TW.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
-<!--
-TODO: add a screenshot to docs/screenshot.png (1280×720 recommended), then uncomment:
+**[Live demo →](https://json.shigc.top/)**
 
 <p align="center">
-  <img src="./docs/screenshot.png" alt="JSON Toolbox screenshot" width="900">
+  <img src="./docs/screenshot.png" alt="JSON Toolbox home screen" width="900">
 </p>
--->
+
+<p align="center">
+  <img src="./docs/screenshot-format.png" alt="JSON Format tool with side-by-side input and result" width="900">
+</p>
 
 ## Why another JSON tool?
 
@@ -71,7 +73,7 @@ HTML file.
 ### Install and run
 
 ```bash
-git clone https://github.com/your-name/json-toolbox.git
+git clone https://github.com/shigc/json-toolbox.git
 cd json-toolbox
 npm install
 npm run dev

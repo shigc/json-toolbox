@@ -28,5 +28,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Light / dark / system theme
 - Offline single-file build (`dist-single/index.html`)
 
-[Unreleased]: https://github.com/your-name/json-toolbox/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/your-name/json-toolbox/releases/tag/v0.1.0
+[Unreleased]: https://github.com/shigc/json-toolbox/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/shigc/json-toolbox/releases/tag/v0.1.0

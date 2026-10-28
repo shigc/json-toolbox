@@ -8,11 +8,11 @@
   "author": "JSON Toolbox contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-name/json-toolbox.git"
+    "url": "git+https://github.com/shigc/json-toolbox.git"
   },
-  "homepage": "https://github.com/your-name/json-toolbox#readme",
+  "homepage": "https://json.shigc.top/",
   "bugs": {
-    "url": "https://github.com/your-name/json-toolbox/issues"
+    "url": "https://github.com/shigc/json-toolbox/issues"
   },
   "keywords": [
     "json",
