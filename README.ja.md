@@ -15,10 +15,6 @@
   <img src="./docs/screenshot.png" alt="JSON Toolbox ホーム画面" width="900">
 </p>
 
-<p align="center">
-  <img src="./docs/screenshot-format.png" alt="JSON フォーマットツール（左に入力、右に結果）" width="900">
-</p>
-
 ## なぜもう一つ JSON ツールが必要なのか
 
 多くのオンライン JSON ツールは、テキストエリアとボタンが 1 つずつあるだけです。
@@ -26,6 +22,10 @@ JSON Toolbox はデスクトップアプリの操作感——メニューバー�
 ステータスバー、キーボードショートカット——を取り入れ、処理のすべてをブラウザ内
 で完結させます。データが端末の外に出ることはなく、単一ファイルとしてビルドすれば
 完全にオフラインでも動作します。
+
+<p align="center">
+  <img src="./docs/screenshot-format.png" alt="JSON フォーマットツール（左に入力、右に結果）" width="900">
+</p>
 
 ## 特徴
 

@@ -15,15 +15,15 @@
   <img src="./docs/screenshot.png" alt="JSON Toolbox 首頁" width="900">
 </p>
 
-<p align="center">
-  <img src="./docs/screenshot-format.png" alt="JSON 格式化工具，左側輸入、右側結果" width="900">
-</p>
-
 ## 為什麼還需要一個 JSON 工具？
 
 大多數線上 JSON 工具只有一個輸入框和一個按鈕。JSON Toolbox 改用桌面軟體的
 操作方式——選單列、多標籤工作區、狀態列、快速鍵——並把所有處理都留在瀏覽器
 中完成。沒有任何資料離開裝置，建置成單一檔案後甚至可以完全離線使用。
+
+<p align="center">
+  <img src="./docs/screenshot-format.png" alt="JSON 格式化工具，左側輸入、右側結果" width="900">
+</p>
 
 ## 功能特性
 

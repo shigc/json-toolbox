@@ -15,15 +15,15 @@
   <img src="./docs/screenshot.png" alt="JSON Toolbox 首页" width="900">
 </p>
 
-<p align="center">
-  <img src="./docs/screenshot-format.png" alt="JSON 格式化工具，左侧输入、右侧结果" width="900">
-</p>
-
 ## 为什么还要再做一个 JSON 工具？
 
 大多数在线 JSON 工具只是一个输入框加一个按钮。JSON Toolbox 借用桌面软件的
 交互方式——菜单栏、多标签工作区、状态栏、快捷键——同时把所有处理都放在浏览器
 里完成。没有任何数据离开设备，构建成单文件后甚至可以完全离线使用。
+
+<p align="center">
+  <img src="./docs/screenshot-format.png" alt="JSON 格式化工具，左侧输入、右侧结果" width="900">
+</p>
 
 ## 特性
 

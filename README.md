@@ -15,10 +15,6 @@
   <img src="./docs/screenshot.png" alt="JSON Toolbox home screen" width="900">
 </p>
 
-<p align="center">
-  <img src="./docs/screenshot-format.png" alt="JSON Format tool with side-by-side input and result" width="900">
-</p>
-
 ## Why another JSON tool?
 
 Most online JSON tools are a single textarea plus a button. JSON Toolbox instead
@@ -26,6 +22,10 @@ borrows the layout of a desktop application — menu bar, tabbed workspaces, sta
 bar, keyboard shortcuts — and keeps every operation in the browser. Nothing is
 sent to a server, so it also works completely offline when built as a single
 HTML file.
+
+<p align="center">
+  <img src="./docs/screenshot-format.png" alt="JSON Format tool with side-by-side input and result" width="900">
+</p>
 
 ## Features
 

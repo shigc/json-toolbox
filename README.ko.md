@@ -15,16 +15,16 @@
   <img src="./docs/screenshot.png" alt="JSON Toolbox 홈 화면" width="900">
 </p>
 
-<p align="center">
-  <img src="./docs/screenshot-format.png" alt="JSON 포맷 도구(왼쪽 입력, 오른쪽 결과)" width="900">
-</p>
-
 ## 왜 또 다른 JSON 도구인가
 
 대부분의 온라인 JSON 도구는 텍스트 영역 하나와 버튼 하나로 끝납니다. JSON
 Toolbox는 데스크톱 앱의 사용 방식을 따릅니다. 메뉴 바, 다중 탭 작업 공간, 상태
 표시줄, 단축키를 제공하고 모든 처리를 브라우저 안에서 완료합니다. 어떤 데이터도
 기기를 떠나지 않으며, 단일 파일로 빌드하면 완전히 오프라인에서도 동작합니다.
+
+<p align="center">
+  <img src="./docs/screenshot-format.png" alt="JSON 포맷 도구(왼쪽 입력, 오른쪽 결과)" width="900">
+</p>
 
 ## 특징
 
