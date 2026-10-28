@@ -1,0 +1,120 @@
+/* 桌面软件观感的关键比例：菜单栏 30 / 标签栏 34 / 状态栏 22 / 动作条 36 */
+:root {
+  --menubar-h: 30px;
+  --tabbar-h: 34px;
+  --statusbar-h: 22px;
+  --toolbar-h: 36px;
+  --radius: 4px;
+
+  --font-ui: system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Mono", "Cascadia Code", Consolas,
+    "Courier New", monospace;
+  --font-size-ui: 13px;
+  --font-size-code: 13px;
+
+  color-scheme: light;
+
+  --bg-app: #f3f3f3;
+  --bg-panel: #ffffff;
+  --bg-menubar: #ececec;
+  --bg-tabbar: #e4e4e4;
+  --bg-tab-active: #ffffff;
+  --bg-statusbar: #0a66c2;
+  --bg-code: #ffffff;
+  --bg-hover: rgba(0, 0, 0, 0.06);
+  --bg-active: rgba(0, 0, 0, 0.1);
+  --bg-inset: #fafafa;
+
+  --fg: #1f1f1f;
+  --fg-muted: #6b6b6b;
+  --fg-faint: #9a9a9a;
+  --fg-on-accent: #ffffff;
+  --fg-statusbar: #ffffff;
+
+  --border: #d6d6d6;
+  --border-strong: #b8b8b8;
+  --accent: #0a66c2;
+  --accent-hover: #0b5cad;
+  --danger: #c42b1c;
+  --success: #107c10;
+  --warn: #9a6700;
+
+  --diff-add-bg: #e6ffec;
+  --diff-del-bg: #ffebe9;
+  --diff-mod-bg: #fff8c5;
+  --diff-add-fg: #116329;
+  --diff-del-fg: #82071e;
+
+  --shadow-popup: 0 6px 22px rgba(0, 0, 0, 0.18);
+  --shadow-panel: 0 1px 2px rgba(0, 0, 0, 0.06);
+
+  /* 树节点缩进步长，手机端在下方媒体查询里收窄 */
+  --tree-indent: 14px;
+
+  /* 编辑器语法着色 */
+  --json-key: #0451a5;
+  --json-string: #a31515;
+  --json-number: #098658;
+  --json-literal: #0000c0;
+  --json-punct: #6b6b6b;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-app: #1e1e1e;
+  --bg-panel: #252526;
+  --bg-menubar: #333333;
+  --bg-tabbar: #2d2d2d;
+  --bg-tab-active: #1e1e1e;
+  --bg-statusbar: #0a66c2;
+  --bg-code: #1e1e1e;
+  --bg-hover: rgba(255, 255, 255, 0.08);
+  --bg-active: rgba(255, 255, 255, 0.14);
+  --bg-inset: #1a1a1a;
+
+  --fg: #d4d4d4;
+  --fg-muted: #8f8f8f;
+  --fg-faint: #6e6e6e;
+  --fg-on-accent: #ffffff;
+  --fg-statusbar: #ffffff;
+
+  --border: #3c3c3c;
+  --border-strong: #525252;
+  --accent: #3794ff;
+  --accent-hover: #4da3ff;
+  --danger: #f1707b;
+  --success: #4ec94e;
+  --warn: #d7a94b;
+
+  --diff-add-bg: #12261e;
+  --diff-del-bg: #2d1418;
+  --diff-mod-bg: #2b2411;
+  --diff-add-fg: #6fd58a;
+  --diff-del-fg: #ff8f8f;
+
+  --shadow-popup: 0 6px 22px rgba(0, 0, 0, 0.55);
+  --shadow-panel: 0 1px 2px rgba(0, 0, 0, 0.4);
+
+  --json-key: #9cdcfe;
+  --json-string: #ce9178;
+  --json-number: #b5cea8;
+  --json-literal: #569cd6;
+  --json-punct: #808080;
+}
+
+/* ---------- 手机：放大尺寸与字号 ---------- */
+/* 触摸目标按 iOS/Android 建议放到 30px 以上（桌面端是 22–26px）；
+   表单控件与编辑器用 16px，因为 iOS Safari 对 <16px 的输入区会自动放大整个页面。 */
+@media (max-width: 720px) {
+  :root {
+    --menubar-h: 42px;
+    --tabbar-h: 42px;
+    --statusbar-h: 26px;
+    --toolbar-h: 40px;
+    --font-size-ui: 14px;
+    --font-size-code: 16px;
+    /* 树节点的缩进步长，窄屏收窄 */
+    --tree-indent: 12px;
+  }
+}

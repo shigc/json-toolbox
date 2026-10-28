@@ -1,0 +1,494 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-ui);
+  color: var(--fg);
+  background: var(--bg-app);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* 滚动条：细，贴近桌面软件 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border: 3px solid transparent;
+  border-radius: 6px;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--fg-faint);
+  background-clip: content-box;
+}
+
+/* ---------- 通用控件（各工具复用，避免重复样式） ---------- */
+
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--bg-panel);
+  color: var(--fg);
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+}
+.app-btn:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+.app-btn:active:not(:disabled) {
+  background: var(--bg-active);
+}
+.app-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.app-btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--fg-on-accent);
+}
+.app-btn.primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+.app-btn.ghost {
+  border-color: transparent;
+  background: transparent;
+}
+.app-btn.ghost:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+.app-btn.sm {
+  height: 22px;
+  padding: 0 7px;
+  font-size: 12px;
+}
+.app-btn.danger:hover:not(:disabled) {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+
+.app-input,
+.app-select,
+.app-textarea {
+  height: 26px;
+  padding: 0 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--bg-panel);
+  color: var(--fg);
+  outline: none;
+}
+.app-input:focus,
+.app-select:focus,
+.app-textarea:focus {
+  border-color: var(--accent);
+}
+.app-textarea {
+  height: auto;
+  padding: 6px 8px;
+  font-family: var(--font-mono);
+  resize: vertical;
+  line-height: 1.5;
+}
+.app-input.mono {
+  font-family: var(--font-mono);
+}
+.app-select {
+  cursor: pointer;
+}
+.app-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.app-checkbox input {
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+/* 工具内动作条 */
+.tool-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  min-height: var(--toolbar-h);
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-panel);
+}
+.tool-row .sep {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+  margin: 0 3px;
+}
+.tool-row .spacer {
+  flex: 1;
+}
+
+/* 面板 */
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.pane-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-inset);
+  font-size: 12px;
+  color: var(--fg-muted);
+  user-select: none;
+}
+.pane-head .spacer {
+  flex: 1;
+}
+.pane-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: auto;
+}
+
+/* 双栏 */
+.split {
+  /* 这两项同时供分隔条定位使用（见下方 .split-resizer） */
+  --split-gap: 8px;
+  --split-pad: 8px;
+  display: grid;
+  gap: var(--split-gap);
+  flex: 1;
+  min-height: 0;
+  padding: var(--split-pad);
+  position: relative;
+}
+.split.cols-2 {
+  /* 拖拽时由 v-split 指令写入 0.35fr 0.65fr 这样的权重 */
+  grid-template-columns: var(--split-cols, 1fr 1fr);
+}
+.split.cols-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* 左右分栏的拖动分隔条：绝对定位在两列之间的间隙上，不参与 grid 布局。
+   默认显示一条淡线提示可拖动，悬停/拖动/键盘聚焦时高亮。 */
+.split-resizer {
+  position: absolute;
+  top: var(--split-pad);
+  bottom: var(--split-pad);
+  left: calc(
+    var(--split-pad) +
+      (100% - 2 * var(--split-pad) - var(--split-gap)) * var(--split-ratio, 0.5) +
+      var(--split-gap) / 2
+  );
+  width: 10px;
+  transform: translateX(-50%);
+  cursor: col-resize;
+  touch-action: none;
+  z-index: 5;
+}
+.split-resizer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  margin-left: -0.5px;
+  border-radius: 1px;
+  background: var(--border-strong);
+  opacity: 0.5;
+  transition:
+    opacity 0.12s,
+    background-color 0.12s;
+}
+.split-resizer:hover::after,
+.split-resizer.dragging::after,
+.split-resizer:focus-visible::after {
+  background: var(--accent);
+  opacity: 1;
+}
+.split-resizer:focus-visible {
+  outline: none;
+}
+/* 拖动时锁住整页光标与文本选择，避免划过编辑器时变为 I 形光标/选中文字 */
+body.split-dragging,
+body.split-dragging * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+/* 徽标 */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  height: 18px;
+  border-radius: 9px;
+  font-size: 11px;
+  background: var(--bg-active);
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+.badge.ok {
+  background: var(--diff-add-bg);
+  color: var(--diff-add-fg);
+}
+.badge.err {
+  background: var(--diff-del-bg);
+  color: var(--diff-del-fg);
+}
+
+/* 空状态 */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 100%;
+  padding: 24px;
+  color: var(--fg-faint);
+  text-align: center;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+.muted {
+  color: var(--fg-muted);
+}
+.faint {
+  color: var(--fg-faint);
+}
+.no-select {
+  user-select: none;
+}
+.scroll-y {
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* 工具视图骨架：动作条 + 主体 */
+.view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+.view-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 分段控件与行内字段（多个工具共用） */
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.seg-btn {
+  height: 24px;
+  padding: 0 10px;
+  border: 0;
+  background: var(--bg-panel);
+  color: var(--fg-muted);
+  cursor: pointer;
+  font-size: 12px;
+}
+.seg-btn + .seg-btn {
+  border-left: 1px solid var(--border-strong);
+}
+.seg-btn:hover {
+  background: var(--bg-hover);
+}
+.seg-btn.on {
+  background: var(--accent);
+  color: var(--fg-on-accent);
+}
+.field-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--fg-muted);
+  font-size: 12px;
+}
+
+/* 下拉弹出层基类 */
+.popup {
+  position: fixed;
+  z-index: 3000;
+  min-width: 180px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-panel);
+  box-shadow: var(--shadow-popup);
+}
+
+/* ==========================================================================
+   手机适配（<=720px）
+   桌面端的样式保持原样，这里只处理窄屏：放大触摸目标、把双栏改成上下等分、
+   让工具栏横向滚动而不是换行（纵向空间要留给编辑器）。
+   ========================================================================== */
+@media (max-width: 720px) {
+  /* iOS 的地址栏会挤压 100% 高度，dvh 更稳 */
+  @supports (height: 100dvh) {
+    html,
+    body,
+    #app {
+      height: 100dvh;
+    }
+  }
+
+  /* ---- 触摸目标放大 ---- */
+  .app-btn {
+    height: 34px;
+    padding: 0 12px;
+  }
+  .app-btn.sm {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+  .app-input,
+  .app-select {
+    height: 34px;
+    /* 16px 是 iOS 不触发自动放大的下限 */
+    font-size: 16px;
+  }
+  .app-textarea {
+    font-size: 16px;
+  }
+  .app-checkbox {
+    gap: 7px;
+  }
+  .app-checkbox input {
+    width: 17px;
+    height: 17px;
+  }
+
+  .seg-btn {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  /* ---- 工具栏：不换行、横向滚动 ---- */
+  .tool-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 8px;
+    padding: 6px 10px;
+    scrollbar-width: none;
+  }
+  .tool-row::-webkit-scrollbar {
+    height: 0;
+  }
+  .tool-row > * {
+    flex: none;
+  }
+  /* spacer 在 nowrap 下仍要能撑开，否则末尾按钮贴到内容后面 */
+  .tool-row .spacer {
+    flex: 1 0 12px;
+  }
+  .tool-row .sep {
+    height: 22px;
+  }
+
+  /* ---- 双栏 → 上下等分 ---- */
+  /* 用等分行而不是让内容撑高：这样整页不滚动，两个编辑区各自内部滚动，
+     避免「页面滚动 + 编辑器滚动」的嵌套滚动体验。 */
+  .split {
+    padding: 6px;
+    gap: 6px;
+  }
+  /* 窄屏是上下排列，横向拖动条没有意义 */
+  .split-resizer {
+    display: none;
+  }
+  .split.cols-2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .split.cols-3 {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .pane-head {
+    height: 32px;
+    font-size: 12px;
+  }
+  .pane-head .badge {
+    height: 20px;
+  }
+
+  .badge {
+    height: 20px;
+    font-size: 11px;
+  }
+
+  .empty {
+    padding: 16px;
+    gap: 6px;
+  }
+}
